@@ -1,0 +1,24 @@
+{
+  "name": "okdesk-print-forms",
+  "version": "0.1.0",
+  "description": "HTML print forms for OKDESK system",
+  "main": "gulpfile.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp build"
+  },
+  "keywords": [
+    "okdesk",
+    "print",
+    "msp",
+    "itm"
+  ],
+  "author": "Vladimir Inshakov <markoni48@yandex.ru>",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "gulp": "^5.0.0",
+    "gulp-pug": "^5.0.0",
+    "gulp-rename": "^2.0.0"
+  }
+}
