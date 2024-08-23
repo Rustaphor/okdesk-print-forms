@@ -5,8 +5,11 @@
   "main": "gulpfile.js",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "gulp build"
+    "clean": "gulp clean",
+    "test": "gulp test",
+    "build": "gulp build",
+    "watch": "gulp",
+    "webserver": "gulp webserver"
   },
   "keywords": [
     "okdesk",
@@ -17,13 +20,15 @@
   "author": "Vladimir Inshakov <markoni48@yandex.ru>",
   "license": "BSD-2-Clause",
   "devDependencies": {
+    "@stdlib/string-replace": "^0.2.2",
     "gulp": "^5.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-htmlmin": "^5.0.1",
     "gulp-pug": "^5.0.0",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.1.0",
+    "gulp-transform": "^3.0.5",
+    "gulp-webserver": "^0.9.1",
     "sass": "^1.77.8"
-  },
-  "dependencies": {
-    "gulp-htmlmin": "^5.0.1"
   }
 }
