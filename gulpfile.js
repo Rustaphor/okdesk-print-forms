@@ -5,6 +5,7 @@ const pug = require('gulp-pug');
 const sass = require('gulp-sass')(require('sass'));
 const htmlmin = require('gulp-htmlmin');
 const transform = require('gulp-transform');
+const inlineCss = require('gulp-inline-css');
 const fs = require('fs');
 const replace = require('@stdlib/string-replace');
 const webserver = require('gulp-webserver');
@@ -31,7 +32,14 @@ function cleanFiles() {
 // Задача конвертирование и минимизация SASS->CSS
 function buildStyles() {
   return src(dir.src.sass)
-    .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+    .pipe(sass().on('error', sass.logError))
+    .pipe(dest(dir.tempout));
+}
+
+// Задача конвертирование и минимизация SASS->CSS
+function inlineStyles() {
+  return src(dir.tempout + '**/*.html')
+    .pipe(inlineCss({removeHtmlSelectors: true}).on('error', sass.logError))
     .pipe(dest(dir.tempout));
 }
 
@@ -93,7 +101,7 @@ function webServer() {
 
 
 exports.clean = cleanFiles;
-exports.build = series(cleanFiles, buildStyles, pug2htmlConvert, htmlMinify);
+exports.build = series(cleanFiles, buildStyles, pug2htmlConvert, inlineStyles, htmlMinify);
 exports.test = series(buildStyles, pug2htmlConvert, testOthersCopy, testFormCreate);
 exports.webserver = webServer;
 exports.watch = watching;
